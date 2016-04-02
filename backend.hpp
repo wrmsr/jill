@@ -175,3 +175,4 @@ public:
 };
 
 std::string ftostr(const llvm::APFloat &V);
+std::string ftostr(double V);

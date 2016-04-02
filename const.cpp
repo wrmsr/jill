@@ -203,7 +203,7 @@ void JVMWriter::printStaticConstant(const llvm::Constant *c) {
                              "lljvm/runtime/Memory/pack(I" + typeDescriptor + ")I");
       break;
     case llvm::Type::ArrayTyID:
-      if (const llvm::ConstantArray *ca = llvm::dyn_cast<llvm::ConstantArray>(c)) if (ca->isString()) {
+      if (const llvm::ConstantDataSequential *ca = llvm::dyn_cast<llvm::ConstantDataSequential>(c)) if (ca->isString()) {
         bool cstring = ca->isCString();
         printConstLoad(ca->getAsString(), cstring);
         if (cstring)
