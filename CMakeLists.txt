@@ -83,7 +83,7 @@ add_executable(jill
         main.cpp
         )
 
-set_target_properties(jill PROPERTIES COMPILE_FLAGS -std=c++14 -fno-exceptions -fno-rtti)
+target_compile_options(jill PRIVATE -std=c++14 -fno-exceptions -fno-rtti)
 
 llvm_map_components_to_libnames(LLVM_LIBS support core irreader)
 target_link_libraries(jill ${LLVM_LIBS})
