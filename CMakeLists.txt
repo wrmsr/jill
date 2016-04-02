@@ -81,9 +81,14 @@ add_definitions(${LLVM_DEFINITIONS})
 
 add_executable(jill
         main.cpp
+        backend.cpp
+        backend.hpp
+        sections.cpp
         )
 
 target_compile_options(jill PRIVATE -std=c++14 -fno-exceptions -fno-rtti)
 
-llvm_map_components_to_libnames(LLVM_LIBS support core irreader)
+target_include_directories(jill PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+
+llvm_map_components_to_libnames(LLVM_LIBS support core irreader analysis transformutils codegen)
 target_link_libraries(jill ${LLVM_LIBS})
