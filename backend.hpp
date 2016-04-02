@@ -25,7 +25,6 @@
 #include <llvm/Support/MemoryBuffer.h>
 #include <llvm/Transforms/Scalar.h>
 
-
 class JVMWriter : public llvm::FunctionPass {
 private:
   static char ID;

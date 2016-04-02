@@ -42,9 +42,7 @@ void JVMWriter::printFields() {
       out << ".extern field ";
       externRefs.insert(i);
     } else
-      out << ".field "
-      << (i->hasLocalLinkage() ? "private " : "public ")
-      << "static final ";
+      out << ".field " << (i->hasLocalLinkage() ? "private " : "public ") << "static final ";
     out << getValueName(i) << ' ' << getTypeDescriptor(i->getType());
     if (debug >= 3)
       out << " ; " << *i;
@@ -63,11 +61,10 @@ void JVMWriter::printExternalMethods() {
     if (i->isDeclaration() && !i->isIntrinsic()) {
       const llvm::Function *f = i;
       const llvm::FunctionType *ty = f->getFunctionType();
-      out << ".extern method "
-      << getValueName(f) << getCallSignature(ty);
-//            FIXME:
-//            if(debug >= 3)
-//                out << " ; " << *ty;
+      out << ".extern method " << getValueName(f) << getCallSignature(ty);
+      // FIXME:
+      // if(debug >= 3)
+      // out << " ; " << *ty;
       out << '\n';
       externRefs.insert(f);
     }

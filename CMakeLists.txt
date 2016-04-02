@@ -85,7 +85,10 @@ add_executable(jill
         backend.hpp
         sections.cpp
         const.cpp
-        util.cpp)
+        util.cpp
+        types.cpp
+        name.cpp
+        )
 
 target_compile_options(jill PRIVATE -std=c++14 -fno-exceptions -fno-rtti)
 
