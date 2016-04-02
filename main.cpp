@@ -1,17 +1,7 @@
 #include <iostream>
 
-#include <llvm/IR/LLVMContext.h>
-#include <llvm/IR/DataLayout.h>
-#include <llvm/IR/Verifier.h>
-#include <llvm/Bitcode/ReaderWriter.h>
-#include <llvm/Support/CommandLine.h>
-#include <llvm/Support/MemoryBuffer.h>
-#include <llvm/IR/Module.h>
-#include <llvm/Transforms/Scalar.h>
-#include <llvm/CodeGen/Passes.h>
-#include <llvm/PassManager.h>
-
 #include "backend.hpp"
+
 
 static llvm::cl::opt<std::string> input(llvm::cl::Positional, llvm::cl::desc("<input bitcode>"), llvm::cl::init("-"));
 static llvm::cl::opt<std::string> classname("classname", llvm::cl::desc("Binary name of the generated class"));
@@ -64,11 +54,9 @@ int main(int argc, const char *const *argv) {
   // TODO: fix switch generation so the following pass is not needed
   pm.add(llvm::createLowerSwitchPass());
   pm.add(llvm::createCFGSimplificationPass());
-  pm.add(new JVMWriter());
-  // pm.add(new JVMWriter(&td, fouts(), classname, debugLevel));
+  pm.add(new JVMWriter(&dl, llvm::fouts(), classname, debugLevel));
   // pm.add(llvm::createGCInfoDeleter());
   pm.run(*mod);
 
   return 0;
 }
-
