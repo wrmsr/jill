@@ -80,19 +80,20 @@ include_directories(${LLVM_INCLUDE_DIRS})
 add_definitions(${LLVM_DEFINITIONS})
 
 add_executable(jill
-        main.cpp
         backend.cpp
         backend.hpp
-        sections.cpp
-        const.cpp
-        util.cpp
-        types.cpp
-        name.cpp
-        loadstore.cpp
         block.cpp
         branch.cpp
+        const.cpp
         function.cpp
         instruction.cpp
+        loadstore.cpp
+        main.cpp
+        name.cpp
+        printinst.cpp
+        sections.cpp
+        types.cpp
+        util.cpp
         )
 
 target_compile_options(jill PRIVATE -std=c++14 -fno-exceptions -fno-rtti)

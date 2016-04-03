@@ -187,7 +187,7 @@ void JVMWriter::printArithmeticInstruction(unsigned int op,
       printVirtualInstruction(
         "udiv(" + typeDescriptor + typeDescriptor + ")" + typeDescriptor);
       break;
-    case Instruction::URem:
+    case llvm::Instruction::URem:
       printVirtualInstruction(
         "urem(" + typeDescriptor + typeDescriptor + ")" + typeDescriptor);
       break;
