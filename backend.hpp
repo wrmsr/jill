@@ -27,8 +27,6 @@
 
 class JVMWriter : public llvm::FunctionPass {
 private:
-  static char ID;
-
   llvm::formatted_raw_ostream &out;
   std::string sourcename;
   std::string classname;
@@ -45,6 +43,8 @@ private:
   unsigned int instNum;
 
 public:
+  static char ID;
+
   JVMWriter(const llvm::DataLayout *dl, llvm::formatted_raw_ostream &o,
             const std::string &cls, unsigned int dbg);
 

@@ -2,10 +2,26 @@
 
 char JVMWriter::ID = 0;
 
+static void *initializeJVMWriterPassOnce(llvm::PassRegistry &Registry) {
+  llvm::PassInfo *PI = new llvm::PassInfo(
+    "JVMWriter",
+    "JVMWriter",
+    &JVMWriter::ID,
+    llvm::PassInfo::NormalCtor_t(llvm::callDefaultCtor<JVMWriter>),
+    false,
+    false);
+  Registry.registerPass(*PI, true);
+  return PI;
+}
+
+void initializeJVMWriterPass(llvm::PassRegistry &Registry) {
+  CALL_ONCE_INITIALIZATION(initializeJVMWriterPassOnce)
+}
+
 JVMWriter::JVMWriter(const llvm::DataLayout *dl, llvm::formatted_raw_ostream &o,
                      const std::string &cls, unsigned int dbg)
   : FunctionPass(ID), dataLayout(dl), out(o), classname(cls), debug(dbg) {
-
+  initializeJVMWriterPass(*llvm::PassRegistry::getPassRegistry());
 }
 
 /**
