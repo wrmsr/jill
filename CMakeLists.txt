@@ -92,6 +92,7 @@ add_executable(jill
         block.cpp
         branch.cpp
         function.cpp
+        instruction.cpp
         )
 
 target_compile_options(jill PRIVATE -std=c++14 -fno-exceptions -fno-rtti)
