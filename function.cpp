@@ -187,7 +187,7 @@ void JVMWriter::printCallInstruction(const llvm::Instruction *inst) {
  * @param inst  the instruction
  */
 void JVMWriter::printInvokeInstruction(const llvm::InvokeInst *inst) {
-  std::string labelname = getUID() + "$invoke";
+  std::string labelname = llvm::utostr(getUID()) + "$invoke";
   printLabel(labelname + "_begin");
   printFunctionCall(inst->getOperand(0), inst);
   if (!inst->getType()->isVoidTy())

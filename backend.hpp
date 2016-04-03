@@ -48,6 +48,10 @@ public:
   JVMWriter(const llvm::DataLayout *dl, llvm::formatted_raw_ostream &o,
             const std::string &cls, unsigned int dbg);
 
+  virtual const char *getPassName() const override {
+    return "JVMWriter";
+  }
+
   virtual bool doInitialization(llvm::Module &module) override;
   virtual bool runOnFunction(llvm::Function &F) override;
   virtual void getAnalysisUsage(llvm::AnalysisUsage &usage) const override;
