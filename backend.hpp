@@ -45,6 +45,7 @@ private:
 public:
   static char ID;
 
+  JVMWriter();
   JVMWriter(const llvm::DataLayout *dl, llvm::formatted_raw_ostream &o,
             const std::string &cls, unsigned int dbg);
 
