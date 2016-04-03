@@ -88,6 +88,9 @@ add_executable(jill
         util.cpp
         types.cpp
         name.cpp
+        loadstore.cpp
+        block.cpp
+        branch.cpp
         )
 
 target_compile_options(jill PRIVATE -std=c++14 -fno-exceptions -fno-rtti)
