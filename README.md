@@ -1,3 +1,5 @@
+**NOTE:** This is a WIP update attempt dumpted to github for transfer between machines.
+
 **LLJVM** provides a set of tools and libraries for running comparatively low level
 languages (such as C) on the JVM.
 
