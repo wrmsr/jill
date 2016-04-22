@@ -13,6 +13,8 @@ enable_language(CXX)
 #         ${CMAKE_CURRENT_BINARY_DIR}/llvm/include
 #         )
 
+####
+
 # CFLAGS := $(shell ../llvm/build/bin/llvm-config --cxxflags --ldflags --libs bitreader codegen selectiondag)
 
 # -I/Users/spinlock/src/wrmsr/jill/llvm/include
@@ -71,13 +73,13 @@ enable_language(CXX)
 
 ####
 
-find_package(LLVM REQUIRED CONFIG)
-
-message(STATUS "Found LLVM ${LLVM_PACKAGE_VERSION}")
-message(STATUS "Using LLVMConfig.cmake in: ${LLVM_DIR}")
-
-include_directories(${LLVM_INCLUDE_DIRS})
-add_definitions(${LLVM_DEFINITIONS})
+# find_package(LLVM REQUIRED CONFIG)
+#
+# message(STATUS "Found LLVM ${LLVM_PACKAGE_VERSION}")
+# message(STATUS "Using LLVMConfig.cmake in: ${LLVM_DIR}")
+#
+# include_directories(${LLVM_INCLUDE_DIRS})
+# add_definitions(${LLVM_DEFINITIONS})
 
 add_executable(jill
         backend.cpp
@@ -100,5 +102,5 @@ target_compile_options(jill PRIVATE -std=c++14 -fno-exceptions -fno-rtti)
 
 target_include_directories(jill PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
-llvm_map_components_to_libnames(LLVM_LIBS support core irreader analysis transformutils codegen)
-target_link_libraries(jill ${LLVM_LIBS})
+# llvm_map_components_to_libnames(LLVM_LIBS support core irreader analysis transformutils codegen)
+# target_link_libraries(jill ${LLVM_LIBS})
